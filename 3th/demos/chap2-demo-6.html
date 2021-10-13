@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Chap2 Demo Sierpinski Gasket </title>
+	<style>body {text-align: center;} table {margin: auto;}</style>
+    <script id="vertex-shader" type="x-shader/x-vertex">
+	attribute vec4 vPosition;
+	uniform mat4 sb;
+	void main(){
+		gl_Position = sb * vPosition;
+	}
+	</script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+	precision mediump float;
+	void main(){
+		gl_FragColor = vec4(1.0,0.0,0.0,1.0);
+	}
+	</script>
+	
+    <script type="text/javascript" src="../js/common/webgl-utils.js"></script>
+    <script type="text/javascript" src="../js/common/initShaders.js"></script>
+    <script type="text/javascript" src="../js/common/gl-matrix-min.js"></script>
+	
+    <script type="text/javascript" src="../js/ch02/gasket-xuan.js"></script>
+</head>
+
+<body onload="initTriangles()">
+	<table>
+		<tr>
+			<td >
+				<div style="text-align: center;">
+				<h2></h2>
+				<canvas id="gl-canvas" width="512" height="512">你的浏览器不支持HTML5 canvas元素</canvas>
+				</div>
+			</td>
+			<td>
+				<div id="cengshu">
+					<fieldset>
+					<legend>层数</legend>
+					<input type="text" id="ceng" value="1" style="width:20px"/><br>
+					</fieldset>
+				</div>
+				
+				<div id="dushu">
+					<fieldset>
+					<legend>旋转度数</legend>
+					<input type="text" id="jiao" value="0" style="width:20px"/><br>
+					</fieldset>
+				</div>
+				
+				<script type="text/javascript">
+					draw();
+				</script>
+				<input type="button" onclick="draw()" value="绘制"/>
+			</td>
+		</tr>
+	</table>
+
+</body>
+
+</html>

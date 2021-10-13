@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Chap2 Demo Sierpinski Gasket </title>
+	<style>body {text-align: center;} table {margin: auto;}</style>
+    <script id="vertex-shader" type="x-shader/x-vertex">
+	attribute vec4 vPosition;
+	attribute vec4 a_Color;
+	varying vec4 v_Color;
+	void main(){
+		gl_Position = vPosition;
+		v_Color = a_Color;
+	}
+	</script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+	precision mediump float;
+    varying vec4 v_Color;
+	void main(){
+		gl_FragColor = v_Color;
+	}
+	</script>
+	
+    <script type="text/javascript" src="../js/common/webgl-utils.js"></script>
+    <script type="text/javascript" src="../js/common/initShaders.js"></script>
+    <script type="text/javascript" src="../js/common/gl-matrix-min.js"></script>
+	
+    <script type="text/javascript" src="../js/ch02/gasket-triangles.js"></script>
+</head>
+
+<body>
+	<table>
+		<tr>
+			<td >
+				<div style="text-align: center;">
+				<h2>Sierpinski Gasket in 2D</h2>
+				<canvas id="gl-canvas" width="512" height="512">你的浏览器不支持HTML5 canvas元素</canvas>
+				</div>
+			</td>
+			<td>
+				<div id="weidu">
+					<fieldset>
+					<legend>维度</legend>
+					<label for="DoorCt">
+						<input type="radio" name="dimensional" value="1" id="1d"/>线条</br>
+						<input type="radio" name="dimensional" value="2" id="2d" checked/>平面</br>
+						<input type="radio" name="dimensional" value="3" id="3d"/>立体</br>
+					</label>
+					</fieldset>
+				</div>
+				
+				<div id="cengshu">
+					<fieldset>
+					<legend>层数</legend>
+					<input type="text" id="weihe" value="1"/ style="width:20px"><br>
+					</fieldset>
+				</div>
+				
+				<div id="yanse">
+					<fieldset>
+					<legend>颜色</legend>
+					<input type="color" value="#ff0000" id="color"/><br>
+					</fieldset>
+				</div>
+				<br>
+				<script type="text/javascript">
+					draw2();
+				</script>
+				<input type="button" onclick="tong()" value="绘制"/>
+			</td>
+		</tr>
+	</table>
+
+</body>
+
+</html>
