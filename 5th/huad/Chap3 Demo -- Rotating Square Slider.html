@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://liyi1003zcmu.github.io/demos/chap3-demo-4.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Chap3 Demo -- Rotating Square Slider</title>
+	<style>body {text-align: center;} table {margin: auto;}</style>
+    <script id="rot-v-shader" type="x-shader/x-vertex">
+	attribute vec4 vPosition;
+	uniform float theta;
+
+	void main()
+	{
+		float u = cos( theta );
+		float v = sin( theta );
+	
+		gl_Position.x = vPosition.x * u - vPosition.y * v;
+		gl_Position.y = vPosition.x * v + vPosition.y * u;
+		gl_Position.z = 0.0;
+		gl_Position.w = 1.0;
+	}
+	</script>
+	
+	<script id="rot-f-shader" type="x-shader/x-fragment">
+	precision mediump float;
+	
+	void main()
+	{
+		gl_FragColor = vec4( 1.0, 0.0, 0.0, 1.0 );
+	}
+	</script>
+
+    <script type="text/javascript" src="./Chap3 Demo -- Rotating Square Slider_files/webgl-utils.js.下载"></script>
+    <script type="text/javascript" src="./Chap3 Demo -- Rotating Square Slider_files/initShaders.js.下载"></script>
+    <script type="text/javascript" src="./Chap3 Demo -- Rotating Square Slider_files/gl-matrix-min.js.下载"></script>
+
+    <script type="text/javascript" src="./Chap3 Demo -- Rotating Square Slider_files/rotsquareslider.js.下载"></script>
+</head>
+
+<body onload="initRotSquare()">
+
+    <table>
+		<tr>
+			<td >
+				<div style="text-align: center;">
+				<h2>Sierpinski Gasket in 2D</h2>
+				<canvas id="rot-canvas" width="512" height="512">你的浏览器不支持HTML5 canvas元素</canvas>
+				</div>
+			</td>
+			<td>
+				<div id="sudu">
+					<fieldset>
+					<legend>旋转速度</legend>
+					-<input type="range" id="speedcon" min="0" max="100" value="50" step="10"> +
+					</fieldset>
+				</div>
+				
+				<div id="fangxiang">
+					<fieldset>
+					<legend>旋转方向</legend>
+					<button id="direction" onclick="changeDir()">转换</button><br>
+					</fieldset>
+				</div>
+				<br>
+			</td>
+		</tr>
+	</table>
+
+</body>
+</html>
