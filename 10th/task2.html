@@ -1,0 +1,93 @@
+<html>
+	<head>
+		<title>task2</title>
+		<script src="./common/three.min.js"></script>
+		<script src="./common/OrbitControls.js"></script>
+		<script src="./common/jquery-3.6.0.min.js"></script>
+		<script src="./js/task2.js"></script>
+		<style>
+			body { 
+				margin: 0; 
+				width: 100%; 
+				height: 100%;
+			}
+			input {
+				height:60px;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<script>
+			document.writeln("<div id=\'main\' align=\'center\' width=\'1002\' height=\'510\'></div>");
+			document.writeln("		<button id=\'1\'>");
+			document.writeln("			正三角形");
+			document.writeln("		</button>");
+			document.writeln("		<div>");
+			document.writeln("			<div id=\'tm\' style=\'float: left;margin-top: 25px; width: 80px;\'>");
+			document.writeln("				缩小：0.5");
+			document.writeln("			</div>");
+			document.writeln("			<input id=\'minR\' type=\'range\' min=\'0.5\' max=\'2.0\' step=\'0.1\' value=\'0.5\'/>");
+			document.writeln("		</div>");
+			document.writeln("		<div>");
+			document.writeln("			<div id=\'tm1\' style=\'float: left;margin-top: 25px;width: 80px;\'>");
+			document.writeln("				放大：2");
+			document.writeln("			</div>");
+			document.writeln("			<input id=\'maxR\' type=\'range\' min=\'0.5\' max=\'2.0\' step=\'0.1\' value=\'2.0\'/>");
+			document.writeln("		</div>");
+			document.writeln("		");
+			document.writeln("		<button id=\'2\'>");
+			document.writeln("			正方形");
+			document.writeln("		</button>");
+			document.writeln("		<div>");
+			document.writeln("			<div id=\'tmCube1\' style=\'float: left;margin-top: 25px;width: 80px;\'>");
+			document.writeln("				大小：1");
+			document.writeln("			</div>");
+			document.writeln("			<input id=\'minCube\' type=\'range\' min=\'1\' max=\'6\' step=\'1\' value=\'1\'/>");
+			document.writeln("		</div>");
+			document.writeln("		<div>");
+			document.writeln("			<div id=\'tmCube2\'  style=\'float: left;margin-top: 25px;width: 80px;\'>");
+			document.writeln("				速度：2");
+			document.writeln("			</div>");
+			document.writeln("			<input id=\'maxCube\'  type=\'range\' min=\'1\' max=\'8\' step=\'1\' value=\'2\'/>");
+			document.writeln("		</div>");
+			document.writeln("		<button id=\'3\'>");
+			document.writeln("			立方体");
+			document.writeln("		</button><br><br>");
+			document.writeln("		<button id=\'4\'>");
+			document.writeln("			圆");
+			document.writeln("		</button>");
+			document.writeln("		<div >");
+			document.writeln("			<div id=\'tmCircle1\' style=\'float: left;margin-top: 25px;width: 80px;\'>");
+			document.writeln("				速度：1");
+			document.writeln("			</div>");
+			document.writeln("			<input id=\'minCircle\' type=\'range\' min=\'1\' max=\'5\' step=\'1\' value=\'1\'/>");
+			document.writeln("		</div>");
+			document.writeln("		<div>");
+			document.writeln("			<div id=\'tmCircle2\'  style=\'float: left;margin-top: 25px;width: 100px;\'>");
+			document.writeln("				位移值：3");
+			document.writeln("			</div>");
+			document.writeln("			<input id=\'maxCircle\'  type=\'range\' min=\'0\' max=\'5\' step=\'1\' value=\'2\'/>");
+			document.writeln("		</div><br>");
+			document.writeln("		<button id=\'5\'>");
+			document.writeln("			删除所有");
+			document.writeln("		</button>");
+			var kk;
+			var scene = new THREE.Scene();
+			var width = 1002;
+			var height = 510;
+			var camera = new THREE.PerspectiveCamera(60, width / height, 1, 10000);
+			camera.position.set(0,0,120);
+			camera.lookAt(scene.position);
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize(width,height);
+			renderer.setClearColor(0xf1f1f1,1);
+			$("#main").append(renderer.domElement)
+			function animate() {
+				requestAnimationFrame( animate );
+				renderer.render( scene, camera );
+			};
+			animate();
+		</script>
+	</body>
+</html>

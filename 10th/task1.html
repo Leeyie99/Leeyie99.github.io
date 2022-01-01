@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>task1</title>
+		<script src="./common/three.js"></script>
+		<script src="./common/OrbitControls.js"></script>
+	</head>
+	<body>
+		<script>
+			var scene = new THREE.Scene();
+			var box = new THREE.BoxGeometry(100,100,100);
+			var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+			var material = new THREE.MeshBasicMaterial({
+				color:0x910000,
+			});
+			var mesh = new THREE.Mesh(box,material);
+			camera.position.set(200,200,200);
+			camera.lookAt(scene.position);
+			var renderer = new THREE.WebGLRenderer();
+			scene.add(mesh);
+			renderer.setSize(window.innerWidth,window.innerHeight);
+			document.body.appendChild( renderer.domElement );
+			function animate() {
+				requestAnimationFrame( animate );
+				renderer.render( scene, camera );
+			};
+			animate();
+			var controls = new THREE.OrbitControls(camera,renderer.domElement);
+		</script>
+	</body>
+</html>

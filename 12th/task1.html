@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<title>任务一</title>
+		<script src="./common/three.js"></script>
+		<script src="./common/OrbitControls.js"></script>
+	</head>
+	<body>
+		<script>
+			var scene = new THREE.Scene();
+			var box = new THREE.SphereGeometry(60,40,40);
+			
+			var material = new THREE.MeshPhongMaterial({
+				color:0xf788f9,
+				specular:0x4488ee,
+				shininess:12
+			});
+			var mesh = new THREE.Mesh(box,material);
+			scene.add(mesh);
+			
+			
+			var point = new THREE.PointLight(0xffffff);
+			point.position.set(100,100,60);
+			point.intensity = 1;
+			scene.add(point);
+			
+			var ambient = new THREE.AmbientLight(0xffffff);
+			scene.add(ambient);
+			
+			
+			
+			
+			var width = window.innerWidth;
+			
+			var height = window.innerHeight;
+			
+			
+		
+			
+			var camera = new THREE.PerspectiveCamera(60, width/height, 1, 10000);
+			
+			camera.position.set(0,0,250);
+			
+			camera.lookAt(scene.position);
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize(width,height);
+			renderer.setClearColor(0xffdfff,1);
+			document.body.appendChild( renderer.domElement );
+			function animate() {
+				requestAnimationFrame( animate );
+				renderer.render( scene, camera );
+			};
+			animate();
+			var controls = new THREE.OrbitControls(camera,renderer.domElement);
+		</script>
+	</body>
+</html>
